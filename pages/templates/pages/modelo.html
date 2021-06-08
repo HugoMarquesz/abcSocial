@@ -1,0 +1,197 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block titulo %}
+  <title>Modelo</title>
+  {% endblock %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="/static/css/estilo.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-
+awesome/4.7.0/css/font-awesome.min.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  {% block menu %}
+  <nav class="navbar navbar-expand-lg navbar-light bg-default">
+    <a class="navbar-brand text-white" href="{% url 'index' %}" >Abc Social</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link text-white" href="{% url 'index' %}">Início <span class="sr-only">(current)</span></a>
+        </li>
+
+        {% if request.user.is_authenticated %}
+
+        {% endif %}
+
+        <ul class="navbar-nav">
+
+          {% if request.user.is_authenticated %}
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user-circle" aria-hidden="true"></i>
+              <span id="username">{{ request.user }}</span>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+
+              <a class="dropdown-item" href="{% url 'logout' %}">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Sair
+              </a>
+
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'login' %}">
+              <i class="fa fa-sign-in" aria-hidden="true"></i>
+              Login
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="{% url 'registrar' %}">
+              <i class="fa fa-user-plus" aria-hidden="true"></i>
+              Cadastrar
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+
+      </ul>
+    </div>
+
+  </nav>
+  {% endblock %}
+
+  {% block conteudo %}
+
+  <div id="#top"></div>
+  <section id="home">
+    <div class="banner-container">
+      <div class="container">
+        <div class="row">
+        </div>
+        <div class="heading text-center">
+          <h2><strong>Estamos aqui para ajudar você que está a procura de dar um engajamento a mais em sua rede social!</strong></h2>
+          <strong></strong>
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+        <div class="countdown styled"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-3 text-center"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up-fill" viewBox="0 0 16 16">
+        <path d="M6.956 1.745C7.021.81 7.908.087 8.864.325l.261.066c.463.116.874.456 1.012.965.22.816.533 2.511.062 4.51a9.84 9.84 0 0 1 .443-.051c.713-.065 1.669-.072 2.516.21.518.173.994.681 1.2 1.273.184.532.16 1.162-.234 1.733.058.119.103.242.138.363.077.27.113.567.113.856 0 .289-.036.586-.113.856-.039.135-.09.273-.16.404.169.387.107.819-.003 1.148a3.163 3.163 0 0 1-.488.901c.054.152.076.312.076.465 0 .305-.089.625-.253.912C13.1 15.522 12.437 16 11.5 16H8c-.605 0-1.07-.081-1.466-.218a4.82 4.82 0 0 1-.97-.484l-.048-.03c-.504-.307-.999-.609-2.068-.722C2.682 14.464 2 13.846 2 13V9c0-.85.685-1.432 1.357-1.615.849-.232 1.574-.787 2.132-1.41.56-.627.914-1.28 1.039-1.639.199-.575.356-1.539.428-2.59z"/>
+      </svg>
+        <h3>Plano de curtidas</span></h3>
+        <p>O nosso plano de curtidas consiste em ajudar os nossos clientes 
+            a conseguir um engajamento por meio de curtidas em suas redes socias, seja ela Instragram, Facebook, Twitter e Tiktok .</p>
+      </div>
+
+      <div class="col-md-3 text-center"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-at" viewBox="0 0 16 16">
+        <path d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914z"/>
+      </svg></i>
+        <h3>Plano de Seguidores</span></h3>
+        <p>O nosso plano de seguidores consiste em ajudar nossos clientes a ganhar seguidores e
+           ficarem famosos em suas redes sociais com a ajuda de nossos serviços .</p>
+      </div>
+
+      <div class="col-md-3 text-center"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-capslock" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M7.27 1.047a1 1 0 0 1 1.46 0l6.345 6.77c.6.638.146 1.683-.73 1.683H11.5v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1H1.654C.78 9.5.326 8.455.924 7.816L7.27 1.047zM14.346 8.5 8 1.731 1.654 8.5H4.5a1 1 0 0 1 1 1v1h5v-1a1 1 0 0 1 1-1h2.846zm-9.846 5a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-1zm6 0h-5v1h5v-1z"/>
+      </svg>
+        <h3>Plano Completo</span></h3>
+        <p>O nosso terceiro Plano consiste basicamente na junção dos planos de Curtida e do plano de Seguidores.</p>
+      </div>
+
+
+    </div>
+  </div>
+  <br><br><br><br>
+
+  <section id="aboutUs">
+    <div class="container">
+      <div class="row feature design">
+        <div class="six columns right">
+          <h2>Sobre a empresa</h2>
+          <p>&nbsp A nossa empresa começou com um sonho de um garoto de se tornar programador e ter a sua própria empresa e trabalhando de sua casa, ajudando as pessoas de alguma forma, e hoje nós somos uma grande empresa de tecnologia em nível nacional. Estamos sempre procurando melhorar nossos serviços e dar o melhor suporte para nossos clientes. </p>          
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <section id="contactUs" class="contact-parlex">
+    <div class="parlex-back">
+      <div class="container">
+
+      </div>
+
+    </div>
+  </section>
+  {% endblock %}
+  {% block rodape %}
+  <footer>
+    <div class="container">
+      <div class="social text-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+          <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+        </svg>
+        <p>AbcSocial@gmail.com</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+          <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+        </svg>
+        <p>(61)992095651</p>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+      </div>
+      <div class="clear"></div>
+
+    </div>
+  </footer>
+  {% endblock %}
+
+  <section class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center"> Copyright 2021 | All Rights Reserved Hugo Marques</a> </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
